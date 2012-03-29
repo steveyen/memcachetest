@@ -11,7 +11,8 @@ chomp $version;
 #my $version = '1.4.2-30-gf966dba';
 #my $version = '1.4.3-rc1';
 #my $version = '1.4.3';
-unless ($version =~ m/^\d+\.\d+\.\d+/) {
+#my $version = 'couchbase_1.8.0-6-g35fd1b9';
+unless ($version =~ m/\d+\.\d+\.\d+/) {
     write_file('m4/version.m4', "m4_define([VERSION_NUMBER], [UNKNOWN])\n");
     exit;
 }
@@ -28,7 +29,7 @@ if ($version =~ m/^(\d+\.\d+\.\d+)_rc(\d+)$/) {
     $VERSION = $1;
     $FULLVERSION = $version;
     $RELEASE = '1.' . $2;
-} elsif ($version =~ m/^(\d+\.\d+\.\d+)$/) {
+} elsif ($version =~ m/(\d+\.\d+\.\d+)/) {
     $VERSION = $1;
     $FULLVERSION = $version;
     $RELEASE = '1';
